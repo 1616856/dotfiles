@@ -1,0 +1,60 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Roboto";
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* This ensures the workspace area doesn't force a white background */
+#workspaces {
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    /* Faint purple for inactive numbers */
+    color: rgba(150, 123, 182, 0.6); 
+    background: transparent;
+    border-radius: 0;
+    padding: 0 15px;
+    margin: 0;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    /* Your signature purple for the text */
+    color: #967bb6; 
+    /* A soft purple tint for the block that blends with your wallpaper */
+    background: rgba(150, 123, 182, 0.2); 
+    border-radius: 0;
+    /* No glow, no extra lines, just a clean flush block */
+    box-shadow: none; 
+}
+
+#workspaces button:hover {
+    background: rgba(150, 123, 182, 0.1);
+}
+
+#mpris {
+    padding: 0 15px;
+    color: #b4befe; /* Light blueish/purple from the sky */
+    font-style: italic;
+}
+
+#clock {
+    color: #f2e9e1; /* The cream color from the uniform */
+    font-weight: bold;
+}
+
+#pulseaudio, #tray, #custom-power {
+    padding: 0 12px;
+}
+
+#custom-power {
+    color: #967bb6; /* Reddish tint for power button */
+    padding-right: 15px;
+}

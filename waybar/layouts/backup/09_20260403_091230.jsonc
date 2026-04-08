@@ -1,0 +1,96 @@
+{
+    "layer": "top",
+    "output": ["*"],
+    "height": 30,
+    "exclusive": true,
+    "passthrough": false,
+    "reload_style_on_change": true,
+    "include": [
+        "$XDG_CONFIG_HOME/waybar/modules/*json*", 
+        "$XDG_CONFIG_HOME/waybar/includes/includes.json" 
+    ],
+
+    "modules-left": [
+        "custom/wallchange",
+        "group/music",
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "group/links",
+        "group/hardware",
+        "custom/power"
+    ],
+
+    // --- LEFT GROUPS ---
+    "group/music": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/spotify",
+            "mpris"
+        ]
+    },
+
+    // --- RIGHT GROUPS ---
+    "group/links": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "bluetooth",
+            "privacy",
+            "tray"
+        ]
+    },
+
+    "group/hardware": {
+        "orientation": "inherit",
+        "modules": [
+            "pulseaudio",
+            "pulseaudio#microphone",
+            "backlight",
+            "battery"
+        ]
+    },
+
+    // --- MODULE DEFINITIONS (Overrides) ---
+    "custom/wallchange": {
+        "format": "󰆊",
+        "on-click": "/home/omar/HyDE/Configs/.local/lib/hyde/swwwallpaper.sh -n",
+        "on-click-right": "/home/omar/HyDE/Configs/.local/lib/hyde/swwwallpaper.sh -p",
+        "on-click-middle": "sleep 0.1 && /home/omar/HyDE/Configs/.local/lib/hyde/swwwallselect.sh",
+        "tooltip-format": "Left: Next | Right: Previous | Middle: Select"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate"
+    },
+
+    "clock": {
+        "format": " {:%I:%M %p  󰃭 %a %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol -tab 4",
+        "tooltip-format": "Mic Volume: {volume}%"
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-connected": "󰂱",
+        "on-click": "blueman-manager"
+    },
+
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "󰈀",
+        "on-click": "nm-connection-editor"
+    }
+}
