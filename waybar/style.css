@@ -1,60 +1,58 @@
+@define-color surface rgba(26, 24, 22, 0.85);
+@define-color border rgba(224, 172, 105, 0.12);
+@define-color accent #e0ac69;
+@define-color text_main #f5eadd;
+@define-color power_red #ff5555;
+
 * {
-    font-family: "JetBrainsMono Nerd Font", "Roboto";
-    font-size: 13px;
-    border: none;
-    border-radius: 0;
+    font-family: "Noto Serif", "Vazirmatn", serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+window#waybar {
     background: transparent;
 }
 
-/* This ensures the workspace area doesn't force a white background */
-#workspaces {
-    background: transparent;
-    border-radius: 0;
-    margin: 0;
-    padding: 0;
+#workspaces, #mpris, #clock, #pulseaudio, #custom-menu, #tray, #custom-power {
+    background: @surface;
+    color: @text_main;
+    margin: 6px 4px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid @border;
 }
 
 #workspaces button {
-    /* Faint purple for inactive numbers */
-    color: rgba(150, 123, 182, 0.6); 
-    background: transparent;
-    border-radius: 0;
-    padding: 0 15px;
-    margin: 0;
-    border: none;
-    transition: all 0.2s ease;
+    color: rgba(245, 234, 221, 0.35);
+    padding: 0;
+    min-width: 28px; 
 }
 
 #workspaces button.active {
-    /* Your signature purple for the text */
-    color: #967bb6; 
-    /* A soft purple tint for the block that blends with your wallpaper */
-    background: rgba(150, 123, 182, 0.2); 
-    border-radius: 0;
-    /* No glow, no extra lines, just a clean flush block */
-    box-shadow: none; 
+    color: @accent;
+    font-weight: 700;
 }
 
-#workspaces button:hover {
-    background: rgba(150, 123, 182, 0.1);
+#custom-menu {
+    color: @accent;
+    font-size: 14px;
 }
 
-#mpris {
-    padding: 0 15px;
-    color: #b4befe; /* Light blueish/purple from the sky */
-    font-style: italic;
+#pulseaudio {
+    min-width: 65px;
 }
 
 #clock {
-    color: #f2e9e1; /* The cream color from the uniform */
-    font-weight: bold;
-}
-
-#pulseaudio, #tray, #custom-power {
-    padding: 0 12px;
+    color: @accent;
+    font-weight: 700;
+    min-width: 85px;
 }
 
 #custom-power {
-    color: #967bb6; /* Reddish tint for power button */
-    padding-right: 15px;
+    color: @power_red;
+    margin-right: 12px;
 }

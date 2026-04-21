@@ -2,49 +2,41 @@
     "layer": "top",
     "position": "top",
     "height": 32,
-    "spacing": 4,
-    "reload_style_on_change": true,
+    "margin-top": 8,
+    "margin-left": 16,
+    "margin-right": 16,
 
     "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "tray", "custom/power"],
+    "modules-right": ["pulseaudio", "tray", "custom/menu", "custom/power"],
 
     "hyprland/workspaces": {
-        "format": "{name}",
-        "on-click": "activate"
+        "format": "{name}"
     },
 
     "mpris": {
-        "format": "{player_icon} {title}",
-        "format-paused": "{status_indicator} <i>{title}</i>",
-        "player-icons": {
-            "default": "▶",
-            "spotify": "",
-            "firefox": ""
-        },
-        "status-icons": {
-            "paused": "⏸"
-        },
-        "max-length": 30
+        "format": "󰐊 {title}",
+        "max-length": 30,
+        "ellipsis": ".."
     },
 
     "clock": {
-        "format": "{:%I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%I:%M %p}", // 12-hour format with AM/PM
+        "tooltip-format": "{:%A, %B %d, %Y}"
+    },
+
+    "custom/menu": {
+        "format": "󰅂",
+        "on-click": "bash ~/.config/hypr/scripts/hub-menu.sh"
     },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+        "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
 
     "custom/power": {
-        "format": "⏻",
-        "on-click": "wlogout",
-        "tooltip": false
+        "format": "󰐥",
+        "on-click": "wlogout"
     }
 }
