@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR="$HOME/Pictures/Wallpapers"
+DIR="$HOME/dotfiles/Wallpapers"
 
 IMG_LIST=""
 for img in "$DIR"/*.{jpg,jpeg,png,webp}; do
