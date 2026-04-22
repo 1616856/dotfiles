@@ -1,3 +1,10 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+/* Use @color1, @color2, etc. in your bar styling now */
+window#waybar {
+    background: rgba(0, 0, 0, 0.5); /* Or use @background */
+    border-bottom: 2px solid @color1;
+}
 @define-color surface rgba(26, 24, 22, 0.85);
 @define-color border rgba(224, 172, 105, 0.12);
 @define-color accent #e0ac69;
