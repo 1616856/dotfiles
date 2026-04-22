@@ -1,5 +1,9 @@
-# --- 2. Install Pacman Packages ---
-echo "Installing everything..."
+# --- 1. Refresh Package Databases ---
+echo "Refreshing mirrors and updating system..."
+sudo pacman -Syu --noconfirm
+
+# --- 2. Install Packages (Correct Names) ---
+echo "Installing the Estate's engine..."
 sudo pacman -S --needed --noconfirm \
     base-devel git kitty waybar rofi-wayland thunar \
     grim slurp wl-clipboard cliphist stow \
@@ -7,15 +11,15 @@ sudo pacman -S --needed --noconfirm \
     noto-fonts noto-fonts-emoji noto-fonts-cjk \
     prismlauncher micro jq
 
-# --- 3. The "Auto-Link" Step ---
-echo "Linking configurations..."
+# --- 3. Linking & Initialization ---
+echo "Linking configurations and templates..."
 cd ~/dotfiles
-stow hypr waybar rofi wal kitty templates
+stow hypr waybar rofi wal kitty wal-templates
 
-# --- 4. The "Jumpstart" (The missing piece) ---
-echo "Baking initial colors so Hyprland doesn't error out..."
-# We run wal on the folder to create the .cache files immediately
+# --- 4. The Final Kickstart ---
+echo "Baking initial colors..."
+# This creates the .cache files so the red error bar disappears
 wal -i ~/dotfiles/wallpapers/ -q
 
-# Make sure all scripts can run
 chmod +x ~/dotfiles/hypr/scripts/*
+echo "Estate deployed successfully."
