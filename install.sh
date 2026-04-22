@@ -1,36 +1,21 @@
 # --- 2. Install Pacman Packages ---
-echo "Installing Pacman packages..."
+echo "Installing everything..."
 sudo pacman -S --needed --noconfirm \
-    base-devel git kitty waybar rofi thunar \
-    grim slurp wl-clipboard cliphist \
-    pamixer playerctl swww python-pywayland \
+    base-devel git kitty waybar rofi-wayland thunar \
+    grim slurp wl-clipboard cliphist stow \
+    pamixer playerctl swww python-pywal \
     noto-fonts noto-fonts-emoji noto-fonts-cjk \
-    prismlauncher micro  # Added micro here
+    prismlauncher micro jq
 
-# --- 4.5 Setup Wallpaper Directory & Sync ---
-echo "Setting up wallpapers..."
-# Create the actual folder in your repo if it's not there
-mkdir -p ~/dotfiles/wallpapers
+# --- 3. The "Auto-Link" Step ---
+echo "Linking configurations..."
+cd ~/dotfiles
+stow hypr waybar rofi wal kitty templates
 
-# Create the system Pictures folder
-mkdir -p ~/Pictures/Wallpapers
+# --- 4. The "Jumpstart" (The missing piece) ---
+echo "Baking initial colors so Hyprland doesn't error out..."
+# We run wal on the folder to create the .cache files immediately
+wal -i ~/dotfiles/wallpapers/ -q
 
-# Copy your current papers into the repo so they can be uploaded to GitHub
-cp ~/Pictures/Wallpapers/* ~/dotfiles/wallpapers/ 2>/dev/null
-
-# Link the repo wallpapers to your system Pictures folder
-# This makes it so if you add a wallpaper to the repo, it shows up in your picker
-ln -sf ~/dotfiles/wallpapers/* ~/Pictures/Wallpapers/
-
-# --- NEW: Setup Pywal Templates ---
-echo "Linking Pywal templates..."
-mkdir -p ~/.config/wal/templates
-
-# This links your repo templates to the place Pywal expects them
-ln -sf ~/dotfiles/wal-templates/* ~/.config/wal/templates/
-
-# --- NEW: Initial Theme Generation ---
-# This fixes the "color1 not found" error by picking the first wallpaper
-if [ -d "~/dotfiles/wallpapers" ]; then
-    wal -i ~/dotfiles/wallpapers/ -q
-fi
+# Make sure all scripts can run
+chmod +x ~/dotfiles/hypr/scripts/*
