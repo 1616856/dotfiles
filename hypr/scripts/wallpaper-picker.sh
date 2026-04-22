@@ -1,24 +1,37 @@
 #!/usr/bin/env bash
 
 DIR="$HOME/dotfiles/wallpapers"
-CHOICE=$(ls "$DIR" | rofi -dmenu -i -p "Select Wallpaper")
+
+# Build the Gallery list
+LIST=""
+for i in $(ls "$DIR"); do
+    LIST+="$i\0icon\x1f$DIR/$i\n"
+done
+
+# The sleek Gallery menu
+CHOICE=$(echo -e "$LIST" | rofi -dmenu -i -p "Gallery" \
+    -theme "$HOME/dotfiles/rofi/wallpaper-grid.rasi" \
+    -show-icons)
 
 if [ -n "$CHOICE" ]; then
     FULL_PATH="$DIR/$CHOICE"
-
-    # 1. Set Wallpaper
-    awww img "$FULL_PATH" --transition-type grow --transition-pos top-right
-
-    # 2. Generate Colors (Silent mode)
-    wal -i "$FULL_PATH" -q
-
-    # 3. Update Vesktop (Discord)
-    pywal-discord -p
-
-    # 4. Refresh Waybar & Hyprland
-    killall -SIGUSR2 waybar
+    
+    # 1. Update the image using awww
+    awww img "$FULL_PATH"
+    
+    # 2. Update the theme using wal
+    # -q: quiet (no terminal output)
+    # -i: path to image
+    wal -q -i "$FULL_PATH"
+    
+    # 3. Force the UI components to refresh
+    # Reloads Hyprland for new border colors
     hyprctl reload
-
-    # 5. Save for reboot
-    echo "$FULL_PATH" > "$HOME/.cache/.last_wallpaper"
+    # Refresh Waybar colors
+    killall -SIGUSR2 waybar
+    
+    # Optional: If you still have the Discord theme, add it here
+    # pywal-discord
+else
+    exit 0
 fi
