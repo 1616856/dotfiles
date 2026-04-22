@@ -1,17 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 DIR="$HOME/dotfiles/wallpapers"
+CHOICE=$(ls "$DIR" | rofi -dmenu -i -p "Select Wallpaper")
 
-IMG_LIST=""
-for img in "$DIR"/*.{jpg,jpeg,png,webp}; do
-    [ -f "$img" ] && IMG_LIST+="$(basename "$img")\0icon\x1f$img\n"
-done
-
-SEL=$(echo -e "$IMG_LIST" | rofi -dmenu -p "Select Wallpaper" -i -show-icons -theme-str 'listview {columns: 3; lines: 2;} element {orientation: vertical;} element-icon {size: 120px;}')
-
-if [ -n "$SEL" ]; then
-    # Save the full path to a hidden file for next boot
-    echo "$DIR/$SEL" > "$HOME/.cache/.last_wallpaper"
-    
-    # Set it now
-    awww img "$DIR/$SEL"
+if [ -n "$CHOICE" ]; then
+    FULL_PATH="$DIR/$CHOICE"
+    # Set the wallpaper using awww
+    awww img "$FULL_PATH" --transition-type grow --transition-pos top-right
+    # Save for next reboot
+    echo "$FULL_PATH" > "$HOME/.cache/.last_wallpaper"
 fi
