@@ -1,3 +1,1 @@
-to get:
-cd ~/dotfiles && git pull
-bash ~/dotfiles/install.sh
+cd ~ && git clone https://github.com/1616856/dotfiles/ && bash ~/dotfiles/install.sh
