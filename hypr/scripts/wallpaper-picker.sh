@@ -17,8 +17,9 @@ if [ -n "$CHOICE" ]; then
     # 2. Generate colors
     wal -i "$FULL_PATH"
     
-    # 3. FORCE colors into dotfiles (This is what you wanted)
+    # 3. FORCE colors into dotfiles (This makes it work on any computer)
     cp "$HOME/.cache/wal/colors-waybar.css" "$HOME/dotfiles/waybar/colors.css"
+    cp "$HOME/.cache/wal/colors-rofi-dark.rasi" "$HOME/dotfiles/rofi/colors.rasi"
     
     # 4. Nuclear Restart
     pkill waybar
