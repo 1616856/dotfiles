@@ -1,16 +1,12 @@
-@import "../../.cache/wal/colors-waybar.css";
+@import "colors.css"; /* This looks for the file in the SAME folder */
 
-/* Vibe Check: 
-   @color0 is usually background, @color1-6 are the palette.
-   @color5 or @color6 usually hits those pink/lavender tones in Ghibli art.
-*/
-
-@define-color surface rgba(26, 24, 22, 0.45); /* Increased transparency for "loving" feel */
-@define-color border rgba(255, 255, 255, 0.08); /* Softer, thinner border */
-@define-color accent @color5; /* Dynamically pulls the pink/lavender from flowers */
-@define-color text_main @foreground; /* Dynamic text color */
+@define-color surface rgba(26, 24, 22, 0.45); 
+@define-color border rgba(255, 255, 255, 0.08); 
+@define-color accent @color5; 
+@define-color text_main @foreground; 
 @define-color power_red #ff5555;
 
+/* ... keep the rest of your file exactly how you like it ... */
 * {
     /* Swapping to your preferred Serif aesthetic */
     font-family: "Anthropic Serif", "Noto Serif", serif; 
