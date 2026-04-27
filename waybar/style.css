@@ -1,22 +1,23 @@
 @import "../../.cache/wal/colors-waybar.css";
 
-/* Use @color1, @color2, etc. in your bar styling now */
-window#waybar {
-    background: rgba(0, 0, 0, 0.5); /* Or use @background */
-}
-@define-color surface rgba(26, 24, 22, 0.85);
-@define-color border rgba(224, 172, 105, 0.12);
-@define-color accent #e0ac69;
-@define-color text_main #f5eadd;
+/* Vibe Check: 
+   @color0 is usually background, @color1-6 are the palette.
+   @color5 or @color6 usually hits those pink/lavender tones in Ghibli art.
+*/
+
+@define-color surface rgba(26, 24, 22, 0.45); /* Increased transparency for "loving" feel */
+@define-color border rgba(255, 255, 255, 0.08); /* Softer, thinner border */
+@define-color accent @color5; /* Dynamically pulls the pink/lavender from flowers */
+@define-color text_main @foreground; /* Dynamic text color */
 @define-color power_red #ff5555;
 
 * {
-    font-family: "Noto Serif", "Vazirmatn", serif;
-    font-size: 11.5px;
+    /* Swapping to your preferred Serif aesthetic */
+    font-family: "Anthropic Serif", "Noto Serif", serif; 
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.4px;
-    text-shadow: none;
-    box-shadow: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease; /* Adds a "soft" feel to state changes */
 }
 
 window#waybar {
@@ -24,23 +25,26 @@ window#waybar {
 }
 
 #workspaces, #mpris, #clock, #pulseaudio, #custom-menu, #tray, #custom-power {
-    background: @surface;
+    /* sampled @background with 50% opacity for glass effect */
+    background: rgba(15, 15, 15, 0.5); 
     color: @text_main;
-    margin: 6px 4px;
-    padding: 0 12px;
-    border-radius: 10px;
+    margin: 6px 3px;
+    padding: 0 14px;
+    border-radius: 12px; /* Slightly rounder for Apple-esque vibe */
     border: 1px solid @border;
 }
 
 #workspaces button {
-    color: rgba(245, 234, 221, 0.35);
-    padding: 0;
-    min-width: 28px; 
+    color: rgba(255, 255, 255, 0.3);
+    padding: 0 4px;
+    transition: all 0.2s;
 }
 
 #workspaces button.active {
     color: @accent;
     font-weight: 700;
+    /* Subtle glow effect using your wallpaper's color */
+    text-shadow: 0 0 10px @accent; 
 }
 
 #custom-menu {
@@ -48,14 +52,9 @@ window#waybar {
     font-size: 14px;
 }
 
-#pulseaudio {
-    min-width: 65px;
-}
-
 #clock {
     color: @accent;
     font-weight: 700;
-    min-width: 85px;
 }
 
 #custom-power {
