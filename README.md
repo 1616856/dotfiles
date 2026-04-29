@@ -21,10 +21,5 @@ Screenshot tool
 
 Light autotheme (Themes Kitty, waybar, and app borders)
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/dae5c45c-2181-4f84-ac13-a245af6edf7a" />
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4555a10b-7944-4f4e-8baf-e8771fa38040" />
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/fc85b468-3e44-4eba-8ba1-29160dce30a8" />
-
-
-
-
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6d26aa4d-34b8-4d50-86a7-f49bf29a883d" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/de6f2796-340f-4ee0-86d5-e866113eaafd" />
