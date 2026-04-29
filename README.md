@@ -4,6 +4,10 @@ Hello, I am Omar and these are my dotfiles for hyprland. I am very new to this b
 Run this to install, it will delete the "dotfiles" folder if it is there and make a new one, and install a few apps I believe that will help with the customizations. Make sure to rename your dotfiles folder if you wish to save your dot files.
 
 rm -rf ~/dotfiles && git clone https://github.com/1616856/dotfiles.git ~/dotfiles && bash ~/dotfiles/install.sh
+reboot
+
+
+FEATURES:
 
 Workspaces
 
