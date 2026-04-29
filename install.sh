@@ -5,7 +5,7 @@ sudo pacman -Syu --noconfirm
 # --- 2. Install Packages (Correct Names) ---
 echo "Installing the Estate's engine..."
 sudo pacman -S --needed --noconfirm \
-    base-devel git kitty waybar rofi-wayland thunar \
+    base-devel git kitty waybar rofi-wayland yazi \
     grim slurp wl-clipboard cliphist stow \
     pamixer playerctl swww python-pywal \
     noto-fonts noto-fonts-emoji noto-fonts-cjk \

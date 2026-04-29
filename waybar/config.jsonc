@@ -2,37 +2,53 @@
     "layer": "top",
     "position": "top",
     "height": 32,
-    "margin-top": 8,
-    "margin-left": 16,
-    "margin-right": 16,
+    "margin-top": 6,
+    "margin-left": 6,
+    "margin-right": 6,
+    "spacing": 4, 
 
     "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "tray", "custom/menu", "custom/power"],
+    "modules-right": ["tray", "pulseaudio", "custom/menu", "custom/power"],
 
     "hyprland/workspaces": {
-        "format": "{name}"
+        "format": "{name}",
+        "on-click": "activate",
+        "all-outputs": true
     },
 
     "mpris": {
         "format": "󰐊 {title}",
-        "max-length": 30,
+        "max-length": 20,
         "ellipsis": ".."
     },
 
     "clock": {
-        "format": "{:%I:%M %p}", // 12-hour format with AM/PM
-        "tooltip-format": "{:%A, %B %d, %Y}"
+        "format": "{:%m/%d • %I:%M %p}", 
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "on-click": "pavucontrol"
     },
 
     "custom/menu": {
         "format": "󰅂",
         "on-click": "bash ~/.config/hypr/scripts/hub-menu.sh"
-    },
-
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
 
     "custom/power": {

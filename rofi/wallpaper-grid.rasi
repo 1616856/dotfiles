@@ -1,51 +1,68 @@
 @import "/home/omar/.cache/wal/colors-rofi.rasi"
 
 * {
+    font: "JetBrainsMono Nerd Font 10";
     background-color: transparent;
-    text-color:       @foreground;
-    font:            "JetBrainsMono Nerd Font 9"; /* Small, sleek text */
+    text-color: @foreground;
 }
 
 window {
-    width:            60%;         /* Wider for the grid */
-    height:           50%;         /* Half screen height */
-    border-radius:    24px;
-    border:           2px;
-    border-color:     @color1;
-    background-color: rgba(15, 15, 15, 0.8);
-    padding:          30px;
+    width:            70%;         /* Wider for a proper gallery look */
+    height:           60%;
+    border-radius:    20px;
+    border:           3px;
+    border-color:     @color1;     /* Primary accent from your wallpaper */
+    background-color: rgba(15, 15, 15, 0.9); /* Deep glass effect */
+    location:         center;
+    anchor:           center;
 }
 
 mainbox {
-    children: [ listview ]; /* Removed the search bar for the "not even there" look */
+    padding:          30px;
+    children:         [ inputbar, listview ];
+}
+
+inputbar {
+    margin:           0 0 25px 0;
+    children:         [ entry ];
+}
+
+entry {
+    placeholder:      "Search Wallpapers...";
+    placeholder-color: rgba(255, 255, 255, 0.2);
+    padding:          12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius:    10px;
 }
 
 listview {
-    columns:       4;              /* 4 Large icons per row */
-    lines:         2;
-    cycle:         true;
-    dynamic:       true;
-    layout:        vertical;
-    spacing:       20px;
+    columns:          4;           /* 4 columns looks best for wide screens */
+    lines:            2;           /* 2 rows of thumbnails */
+    spacing:          20px;
+    cycle:            true;
+    dynamic:          true;
+    layout:           vertical;
+    fixed-columns:    true;
 }
 
 element {
-    orientation:      vertical;    /* Icon on top, text on bottom */
+    orientation:      vertical;    /* Forces icon above text */
     padding:          15px;
-    border-radius:    16px;
+    border-radius:    15px;
 }
 
 element selected {
-    background-color: rgba(255, 255, 255, 0.1);
-    text-color:       @color1;
+    background-color: @color1;     /* Pywal accent color */
+    text-color:       @background; /* Contrast text */
 }
 
 element-icon {
-    size:             120px;       /* Large, luxurious previews */
+    size:             160px;       /* Thumbnail size */
     horizontal-align: 0.5;
 }
 
 element-text {
     horizontal-align: 0.5;
+    vertical-align:   0.5;
     margin:           10px 0 0 0;
 }
